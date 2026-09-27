@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arnob — AI, web development, automation and creative technology portfolio.">
+  <title>Arnob — Portfolio</title>
+  <style>
+    :root{
+      --bg:#07090d;
+      --panel:#0d1118;
+      --panel2:#111722;
+      --text:#f4f7fb;
+      --muted:#9aa6b5;
+      --line:#202938;
+      --accent:#66e3ff;
+      --accent2:#8b7cff;
+      --max:1120px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%,rgba(102,227,255,.10),transparent 30%),
+        radial-gradient(circle at 85% 20%,rgba(139,124,255,.10),transparent 30%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(calc(100% - 40px),var(--max));margin:auto}
+    nav{
+      position:sticky;top:0;z-index:20;
+      background:rgba(7,9,13,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:900;font-size:22px;letter-spacing:-1px}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:26px;color:var(--muted);font-size:14px}
+    .nav-links a:hover{color:var(--text)}
+    .menu{display:none;background:none;border:1px solid var(--line);color:white;padding:8px 10px;border-radius:9px}
+    .hero{padding:110px 0 90px;display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+    .eyebrow{color:var(--accent);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px;margin-bottom:18px}
+    h1{font-size:clamp(48px,7vw,84px);line-height:.98;letter-spacing:-5px;max-width:800px}
+    h1 span{
+      background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .hero p{margin-top:24px;color:var(--muted);font-size:18px;max-width:680px}
+    .buttons{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+    .btn{padding:13px 19px;border-radius:10px;border:1px solid var(--line);font-weight:750;font-size:14px;transition:.2s}
+    .btn.primary{background:var(--text);color:#080a0e;border-color:var(--text)}
+    .btn:hover{transform:translateY(-2px)}
+    .orb{
+      width:min(340px,80vw);aspect-ratio:1;margin:auto;border-radius:50%;
+      background:radial-gradient(circle at 35% 30%,#fff 0 2%,#66e3ff 5%,#15222c 35%,#090b10 65%);
+      box-shadow:0 0 100px rgba(102,227,255,.14),inset -35px -35px 80px #000;
+      position:relative;
+    }
+    .orb:after{
+      content:"ARNOB";position:absolute;inset:0;display:grid;place-items:center;
+      font-size:30px;font-weight:900;letter-spacing:7px;transform:rotate(-18deg);
+      color:rgba(255,255,255,.08)
+    }
+    section{padding:82px 0;border-top:1px solid rgba(255,255,255,.05)}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:35px}
+    .section-head h2{font-size:38px;letter-spacing:-2px}
+    .section-head p{color:var(--muted);max-width:540px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+      border:1px solid var(--line);border-radius:16px;padding:25px;
+      transition:.25s;
+    }
+    .card:hover{transform:translateY(-5px);border-color:#35445a}
+    .icon{font-size:25px;margin-bottom:18px}
+    .card h3{font-size:19px;margin-bottom:9px}
+    .card p{color:var(--muted);font-size:14px}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+    .tag{font-size:11px;color:#cbd5e1;border:1px solid var(--line);padding:5px 8px;border-radius:999px}
+    .project{min-height:250px;display:flex;flex-direction:column;justify-content:space-between}
+    .project .number{color:#526174;font-size:12px;font-weight:800;letter-spacing:2px}
+    .project a{color:var(--accent);font-weight:750;font-size:14px}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+    .about p{color:var(--muted);margin-bottom:14px}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .fact{padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+    .fact strong{display:block;font-size:22px}
+    .fact span{color:var(--muted);font-size:12px}
+    .contact{
+      text-align:center;padding:70px 25px;border:1px solid var(--line);border-radius:22px;
+      background:linear-gradient(135deg,rgba(102,227,255,.07),rgba(139,124,255,.07));
+    }
+    .contact h2{font-size:44px;letter-spacing:-2px}
+    .contact p{color:var(--muted);max-width:620px;margin:15px auto 25px}
+    footer{padding:30px 0;color:#697587;font-size:13px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:850px){
+      .hero{grid-template-columns:1fr;padding-top:75px}
+      .orb{width:250px}
+      .grid{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .menu{display:block}
+    }
+    @media(max-width:560px){
+      .container{width:min(calc(100% - 28px),var(--max))}
+      h1{letter-spacing:-3px}
+      .grid{grid-template-columns:1fr}
+      .facts{grid-template-columns:1fr 1fr}
+      .section-head{display:block}
+      .section-head p{margin-top:10px}
+      .contact h2{font-size:34px}
+      .footer-inner{display:block}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#">arnob<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="menu" onclick="document.querySelector('.nav-links').style.display =
+      document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">☰</button>
+  </div>
+</nav>
+
+<main>
+  <section class="container hero">
+    <div>
+      <div class="eyebrow">AI • Web • Automation • Creative Tech</div>
+      <h1>Hi, I'm <span>Arnob.</span><br>I build digital things.</h1>
+      <p>
+        I explore AI-powered tools, modern websites, automation workflows and
+        creative digital experiences — turning ideas into practical projects.
+      </p>
+      <div class="buttons">
+        <!-- Replace the GitHub URL with your profile URL -->
+        <a class="btn primary" href="https://github.com/arnobhaque546-hue" target="_blank">View GitHub</a>
+        <a class="btn" href="#projects">Explore Projects</a>
+      </div>
+    </div>
+    <div class="orb" aria-label="Arnob portfolio visual"></div>
+  </section>
+
+  <section id="about">
+    <div class="container about">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>Building, experimenting, learning.</h2>
+      </div>
+      <div>
+        <p>
+          I'm Arnob, a technology enthusiast focused on experimenting with
+          AI, web development, automation and content-creation workflows.
+        </p>
+        <p>
+          This portfolio is a simple home for my projects, experiments and
+          technical interests on GitHub.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <h2>What I work with</h2>
+        <p>Areas I use for building projects and exploring new ideas.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">◈</div>
+          <h3>AI & Generative Tech</h3>
+          <p>Exploring local and cloud AI models, image/video generation and AI-assisted workflows.</p>
+          <div class="tags"><span class="tag">LLMs</span><span class="tag">AI Video</span><span class="tag">ComfyUI</span></div>
+        </article>
+        <article class="card">
+          <div class="icon">⌘</div>
+          <h3>Web Development</h3>
+          <p>Creating responsive websites and interfaces with a focus on clean design and usability.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+        </article>
+        <article class="card">
+          <div class="icon">⚙</div>
+          <h3>Automation</h3>
+          <p>Building practical workflows that connect tools, APIs, browsers and content pipelines.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Playwright</span><span class="tag">APIs</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2>Selected projects</h2>
+        <p>Replace these links with your actual GitHub repositories.</p>
+      </div>
+      <div class="grid">
+        <article class="card project">
+          <div>
+            <div class="number">01 / AI</div>
+            <h3>AI Creative Workflow</h3>
+            <p>Experiments with AI-generated images, video and automated content pipelines.</p>
+            <div class="tags"><span class="tag">AI</span><span class="tag">Automation</span></div>
+          </div>
+          <a href="https://github.com/arnobhaque546-hue" target="_blank">View on GitHub →</a>
+        </article>
+        <article class="card project">
+          <div>
+            <div class="number">02 / WEB</div>
+            <h3>Modern Web Projects</h3>
+            <p>Responsive landing pages, portfolio experiences and social-media-focused web interfaces.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+          </div>
+          <a href="https://github.com/arnobhaque546-hue" target="_blank">View on GitHub →</a>
+        </article>
+        <article class="card project">
+          <div>
+            <div class="number">03 / AUTOMATION</div>
+            <h3>Browser Automation</h3>
+            <p>Automation experiments using Python and browser tooling for repeatable workflows.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Playwright</span></div>
+          </div>
+          <a href="https://github.com/arnobhaque546-hue" target="_blank">View on GitHub →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="contact" id="contact">
+        <div class="eyebrow">Let's connect</div>
+        <h2>Have an idea?</h2>
+        <p>
+          Check out my GitHub projects and connect with me for collaboration,
+          experiments and new digital projects.
+        </p>
+        <a class="btn primary" href="https://github.com/arnobhaque546-hue" target="_blank">Open GitHub Profile</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Arnob. Built with HTML & CSS.</span>
+    <span>arnobhaque546-hue</span>
+  </div>
+</footer>
+
+</body>
+</html>
